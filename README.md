@@ -1,5 +1,3 @@
-
-
 # Merlin
 This repository contains two task. One related with Data Engineering and the other related with Data Analysis.
 
@@ -35,19 +33,17 @@ In order to Automate process. Google App Engine can Run daily a Virtual Machine 
 ## Data Analysis Test
 The following section consist on a series of Data Analysis questions.
 
-
 ### 1st Part
 #### 1. Candidate quality
-Looking the different tables on the database and taking into account the business I defined the candidate quality in a very straightforward way.
+Looking the different tables on the database and taking into account the business, candidate quality was defined in a very straightforward way.
 
 - <b>Quality candidate: </b> Candidate that was shortlisted for the job he applied.
 
 #### 2. Weekly application from Qualified candidates
 
-In order to calculate the percentage of weekly applications coming from qualified candidates based on the previous definition a new table called <b> shorlisted </b>  was created LINK and populated flattening the event table, separating candidates that were shortlisted (1) or not (0).
+In order to calculate the percentage of weekly applications coming from qualified candidates based on the previous definition a new table called <b> shorlisted </b>  was created [shortlisted.sql](https://github.com/jmarrietar/merlin/blob/master/data-analysis/sql/shortlisted.sql) and populated flattening the event table, separating candidates that were shortlisted (1) or not (0).
 
-The following graph show the percentage of Weekley applications  ranging from weeks 34 to 38, data was gathered using query <b>qualified_per_week.sql</b> LINK. 
-
+The following graph show the percentage of Weekley applications  ranging from weeks 34 to 38, data was gathered using query [qualified_per_week.sql](https://github.com/jmarrietar/merlin/blob/master/data-analysis/sql/qualified_per_week.sql). 
 
 | week | percentage_quality_candidates (%) |
 |--|--|
@@ -57,16 +53,16 @@ The following graph show the percentage of Weekley applications  ranging from we
 | 37 |  3.9812|
 | 38 |  2.2271|
 
-![Quality candidates per week](https://github.com/jmarrietar/merlin/blob/analysis/data-analysis/plots/quality_candidates.png)
+![Quality candidates per week](https://github.com/jmarrietar/merlin/blob/master/data-analysis/plots/quality_candidates.png)
 
 
 #### 3. What matters most to Candidates?
-Approach for this question consist on a descriptive and a predictive analysis in order to determine what features make candidates apply more to more jobs than others. 
+Approach consist on a descriptive and a predictive analysis in order to determine what features make candidates apply more to more jobs than others. 
 
-<i> Dataset for this point was created using [applications_per_job.sql](https://github.com/jmarrietar/merlin/blob/analysis/data-analysis/sql/applications_per_job.sql) query, that concatenates jobs applications and counts how many each one received. </i> 
+<i> Dataset for this point was created using [applications_per_job.sql](https://github.com/jmarrietar/merlin/blob/master/data-analysis/sql/applications_per_job.sql) query, that concatenates jobs applications and counts how many each one received. </i> 
 
 From the Prescritive Analysis we can say that Required work experience and Salary are the two most important features for candidates to apply for jobs. 
-![Descriptive Analysis](https://github.com/jmarrietar/merlin/blob/analysis/data-analysis/plots/descriptive.png)
+![Descriptive Analysis](https://github.com/jmarrietar/merlin/blob/master/data-analysis/plots/descriptive.png)
 
 A predictive approach was used, training a Random Forest Regressor and ranking feature importance. From results features from more imporante to less important are :
 
@@ -79,7 +75,7 @@ A predictive approach was used, training a Random Forest Regressor and ranking f
 
 From the predictive analysis we can conclude that the variables that most will affect the number of applications are the <b> Required work experience </b> and the <b> salary </b> and looking to the graphs from the descriptive analysis we can see that most variables candidates apply for are ‘PERMANENT’ for Job duration.  ‘FULL_TIME’ for Job Type and ‘1-2 Years’ from required work experience.
 
--  <i> Complete Analysis with python code at  [job-application-analys.ipynb](https://github.com/jmarrietar/merlin/blob/analysis/data-analysis/notebooks/job-application-analys.ipynb) </i>
+-  <i> Complete Analysis with python code at  [job-application-analys.ipynb](https://github.com/jmarrietar/merlin/blob/master/data-analysis/notebooks/job-application-analys.ipynb) </i>
 
 
 #### 4. Employer Behavior when shortlisting. 
@@ -91,11 +87,11 @@ This dataset was created using <b> job_candidate_match.sql </b> , a query that w
 I would like to know if applying some function of string similarity between past experience cv previously constructed and the position_name would indicate a difference in the average of being shortlisted or not. 
 
 
-![Similarity ](https://github.com/jmarrietar/merlin/blob/analysis/data-analysis/plots/point4.png)
+![Similarity ](https://github.com/jmarrietar/merlin/blob/master/data-analysis/plots/point4.png)
 
 Employers tend to shortlist in average a little more from candidates with a higher string match score  between past job titles and job title posted but might not be significant, is important to take into account that similarity was made on the fly and not very rigorous. Future job could be improve this score marching with maybe a <b> [Bag of Words](https://en.wikipedia.org/wiki/Bag-of-words_model) </b> approach. 
 
--  <i> Complete Analysis with python code at  [job-application-analys.ipynb](https://github.com/jmarrietar/merlin/blob/analysis/data-analysis/notebooks/employer-shortlisting-behaviour.ipynb) </i>
+-  <i> Complete Analysis with python code at  [job-application-analys.ipynb](https://github.com/jmarrietar/merlin/blob/master/data-analysis/notebooks/employer-shortlisting-behaviour.ipynb) </i>
 
 ---
 ### 2nd Part
