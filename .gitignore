@@ -1,2 +1,3 @@
 .DS_Store
 */**/*.pyc
+data-analysis/notebooks/.ipynb_checkpoints/*
